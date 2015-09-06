@@ -7,11 +7,11 @@ client_key       "key.pem"
 local_mode true
 node_name 'mdupont-Aspire-7750G'
 
-log_level                :debug
+#log_level                :debug
 log_location             STDOUT
 
 #encrypted_data_bag_secret "data_bag_key"
-chef_client_path 'chef-client -l debug'
+#chef_client_path 'chef-client -l debug'
 
 knife[:berkshelf_path] = "cookbooks"
 knife[:aws_credential_file]   = "/home/mdupont/.aws/credentials"
