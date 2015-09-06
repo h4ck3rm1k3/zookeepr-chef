@@ -19,12 +19,13 @@ gem "buff-ignore","1.1.1"
 gem "buff-ruby_engine","0.1.0"
 gem "buff-shell_out","0.2.0"
 gem "builder","3.2.2"
-gem "bundler","1.10.6"
+
 gem "celluloid","0.16.0"
 gem "celluloid-io","0.16.2"
 gem "chef","12.4.1"
 gem "chef-config","12.4.1"
 gem "chef-provisioning","1.3.0"
+
 gem "chef-zero","4.2.3"
 gem "cheffish","1.3.1"
 
@@ -42,7 +43,7 @@ gem "eventmachine","1.0.8"
 gem "excon","0.45.4"
 gem "faraday","0.9.1"
 gem "ffi","1.9.10"
-gem "ffi-yajl","2.2.2"
+
 gem "fission","0.5.0"
 # gem "fog-atmos","0.1.0"
 gem "fog-aws","0.7.6"
@@ -78,7 +79,7 @@ gem "ipaddress","0.8.0"
 #gem "jmespath","1.0.2"
 gem "json","1.8.3"
 gem "knife-ec2" #,"0.11.0"
-gem "knife-solo","0.5.2"
+
 gem "knife-windows","0.8.6"
 gem "librarian","0.1.2"
 gem "librarian-chef","0.0.4"
@@ -95,19 +96,19 @@ gem "mixlib-cli","1.5.0"
 gem "mixlib-config","2.2.1"
 gem "mixlib-install","0.7.0"
 gem "mixlib-log","1.6.0"
-gem "mixlib-shellout","2.1.0"
+#gem "mixlib-shellout","2.1.0"
 gem "mocha","1.1.0"
 #gem "multi_json","1.7.7"
 gem "multipart-post","2.0.0"
 gem "net-http-persistent","2.9.4"
-gem "net-scp","1.2.1"
+
 gem "net-ssh","2.9.2"
 gem "net-ssh-gateway","1.2.0"
 gem "net-ssh-multi","1.2.1"
 gem "net-telnet","0.1.1"
 gem "netrc","0.10.3"
 gem "nio4r","1.1.1"
-gem "nokogiri","1.6.6.2"
+
 gem "nori","2.6.0"
 gem "octokit","3.8.0"
 gem "ohai","8.5.1"
@@ -151,3 +152,24 @@ gem "varia_model","0.4.0"
 gem "winrm","1.3.4"
 gem "winrm-s","0.3.1"
 gem "wmi-lite","1.0.0"
+gem "knife-zero","1.8.0"
+
+#vagrant
+gem 'knife-vagrant2'
+
+gem "nokogiri"#,"1.6.6.2"
+gem "bundler"#,"1.10.6"
+gem "net-scp","1.2.1"
+gem "childprocess","0.5.6"
+gem "i18n","0.7.0"
+#gem 'hammertime'
+gem 'pry-rescue'
+gem 'pry-stack_explorer'
+gem 'knife-reporting'
+gem "rb-fsevent", "0.9.6"
+
+#from git
+gem "chef-provisioning-aws", :path => '../../chef-provisioning-aws'
+gem "knife-solo", :path => '../../knife-solo'
+gem "vagrant", :path => '../../vagrant'
+gem "ffi-yajl", :path => '../../ffi-yajl'

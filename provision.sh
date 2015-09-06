@@ -1,2 +1,7 @@
-bundler exec knife ec2 server create --image ami-896d85e2  -f t1.micro -S id_rsa -Z us-east-1a --aws-credential-file /home/mdupont/.aws/credentials
+#DEBUG=1
+#EXCON_DEBUG=1
+#export KNIFE_CLIENT_KEY=key
 
+bundler exec knife ec2 server create  --local-mode --verbose --verbose 
+
+#--aws-credential-file /home/mdupont/.aws/credentials
