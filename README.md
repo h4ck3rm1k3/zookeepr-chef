@@ -135,3 +135,13 @@ install the cookbook :
 run converge :
 
     bundle exec knife zero converge '*:*' --ssh-user vagrant
+
+# setup cookbook
+
+    knife cookbook create zookeepr
+
+put the test-kitchen into the Gemfile and run ```bundle install```
+
+    bundle exec kitchen init
+
+   

@@ -33,7 +33,8 @@ knife[:region] = "us-east-1"
 knife[:availability_zone] = "us-east-1a"
 knife[:validation_key] = "/dev/null"
 
-Chef::Config[:ssl_verify_mode] = :verify_peer if defined? ::Chef
+#Chef::Config[:ssl_verify_mode] = :verify_peer if defined? ::Chef
+
 #knife[:verbose_commands] 	 
 knife[:verbosity] =999
 

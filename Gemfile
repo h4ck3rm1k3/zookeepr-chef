@@ -11,9 +11,9 @@ gem "aws-sdk","2.1.17"
 #gem "aws-sdk-core","2.1.17"
 gem "aws-sdk-resources","2.1.17"
 gem "aws-sdk-v1","1.65.0"
-gem "berkshelf","3.3.0"
+
 gem "berkshelf-api-client","1.3.0"
-gem "buff-config","1.0.1"
+
 gem "buff-extensions","1.0.0"
 gem "buff-ignore","1.1.1"
 gem "buff-ruby_engine","0.1.0"
@@ -32,8 +32,8 @@ gem "cheffish","1.3.1"
 gem "cleanroom","1.0.0"
 gem "coderay","1.1.0"
 gem "coveralls","0.8.2"
-gem "dep-selector-libgecode","1.0.2"
-gem "dep_selector","1.0.3"
+
+
 gem "diff-lcs","1.2.5"
 gem "docile","1.1.5"
 gem "domain_name","0.5.24"
@@ -42,7 +42,7 @@ gem "erubis","2.7.0"
 gem "eventmachine","1.0.8"
 gem "excon","0.45.4"
 gem "faraday","0.9.1"
-gem "ffi","1.9.10"
+
 
 gem "fission","0.5.0"
 # gem "fog-atmos","0.1.0"
@@ -173,3 +173,16 @@ gem "chef-provisioning-aws", :path => '../../chef-provisioning-aws'
 gem "knife-solo", :path => '../../knife-solo'
 gem "vagrant", :path => '../../vagrant'
 gem "ffi-yajl", :path => '../../ffi-yajl'
+
+gem "test-kitchen"
+gem "kitchen-vagrant", :path => '../../kitchen-vagrant'
+gem "berkshelf", :path => '../../berkshelf'
+
+gem "ffi", :path => '../../ffi'
+
+
+gem "dep-selector-libgecode",  :path => '../../dep-selector-libgecode'
+
+gem "dep_selector",  :path => '../../dep-selector'
+
+gem "buff-config", :path => '../../buff-config'
