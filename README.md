@@ -126,7 +126,12 @@ add recipies:
 install the cookbook :
 
     bundle exec knife cookbook site download python
-    
+    bundle exec knife cookbook site install python
+
+    bundle exec knife cookbook site download application_python
+    bundle exec knife cookbook site install application_python
+
+
 run converge :
 
     bundle exec knife zero converge '*:*' --ssh-user vagrant
