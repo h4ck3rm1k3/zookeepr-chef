@@ -82,3 +82,51 @@ bootstrap
 
     bundle exec knife zero bootstrap 192.168.67.2 --ssh-user vagrant --sudo
 
+connect to :
+    bundle exec knife ssh 'name:test' -VV ifconfig -x vagrant -a ipaddress
+
+
+but first :
+
+   vagrant/test$ bundle exec vagrant ssh-config
+
+
+it generates
+``
+Host default
+...
+```
+
+And then change the Host to the name of the node:
+
+```
+Host test
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /mnt/data/home/mdupont/experiments/zookeepr/chef/vagrant/test/.vagrant/machines/default/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+  ```
+
+check the connection :
+    bundle exec knife ssh 'name:test' -VV "sudo ifconfig" -x vagrant
+
+list the nodes:
+
+    bundle exec knife node list --local-mode
+
+add recipies:
+
+    bundle exec knife node run_list add test 'recipe[python]'
+
+install the cookbook :
+
+    bundle exec knife cookbook site download python
+    
+run converge :
+
+    bundle exec knife zero converge '*:*' --ssh-user vagrant

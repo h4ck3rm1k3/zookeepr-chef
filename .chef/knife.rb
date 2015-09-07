@@ -40,3 +40,8 @@ knife[:verbosity] =999
 identity_file = 'test.pem'
 
 
+knife[:automatic_attribute_whitelist] = [
+  "fqdn/",
+  "ipaddress/",
+  "roles/",
+]
