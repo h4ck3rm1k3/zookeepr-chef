@@ -144,4 +144,12 @@ put the test-kitchen into the Gemfile and run ```bundle install```
 
     bundle exec kitchen init
 
-   
+test :
+    bundle exec kitchen test
+
+
+# setup berks
+
+in chef/cookbooks/zookeepr
+
+    bundle exec berks init .
