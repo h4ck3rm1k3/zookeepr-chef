@@ -186,3 +186,5 @@ gem "dep-selector-libgecode",  :path => '../../dep-selector-libgecode'
 gem "dep_selector",  :path => '../../dep-selector'
 
 gem "buff-config", :path => '../../buff-config'
+
+gem 'poise-application', github: 'poise/application'
