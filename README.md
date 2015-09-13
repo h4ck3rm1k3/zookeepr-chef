@@ -78,17 +78,22 @@ Using these modules from git, install via git clone and gem
 
 # bootstrap on vagrant
 
-bootstrap
+Run bootstrap on the newly created object to test it:
 
     bundle exec knife zero bootstrap 192.168.67.2 --ssh-user vagrant --sudo
 
-connect to :
+and then you can run converge :
+
+    knife zero converge 'name:test' 
+
+But first check if you can connect to :
+
     bundle exec knife ssh 'name:test' -VV ifconfig -x vagrant -a ipaddress
 
 
-but first :
+but and before that you want to first 
 
-   vagrant/test$ bundle exec vagrant ssh-config
+    vagrant/test$ bundle exec vagrant ssh-config
 
 
 it generates

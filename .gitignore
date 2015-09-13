@@ -1,3 +1,16 @@
 /cookbooks/
+/gempath/
+/sources/
+/vagrant/
 /tmp/librarian/
 /.gitignore~
+/\#*\#
+/.\#*
+/*~
+/.chef/test.pem
+/vagrantsettings.txt
+/test.rb
+/test.log
+/runbundle.sh
+/.chef/local-mode-cache/cache/chef-stacktrace.out
+/.chef/local-mode-cache/cache/chef-client-running.pid
