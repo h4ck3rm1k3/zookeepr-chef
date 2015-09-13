@@ -92,14 +92,14 @@ but first :
 
 
 it generates
-``
-Host default
-...
+
+    Host default
+
+
+Next, change the Host to the name of the node:
+
 ```
 
-And then change the Host to the name of the node:
-
-```
 Host test
   HostName 127.0.0.1
   User vagrant
@@ -110,9 +110,11 @@ Host test
   IdentityFile /mnt/data/home/mdupont/experiments/zookeepr/chef/vagrant/test/.vagrant/machines/default/virtualbox/private_key
   IdentitiesOnly yes
   LogLevel FATAL
-  ```
+
+```
 
 check the connection :
+
     bundle exec knife ssh 'name:test' -VV "sudo ifconfig" -x vagrant
 
 list the nodes:
@@ -144,13 +146,57 @@ put the test-kitchen into the Gemfile and run ```bundle install```
 
     bundle exec kitchen init
 
-test :
+test via vagrant :
 
     bundle exec kitchen test
 
-this will run on the new server:
+this will run on the new vagrant server:
     /opt/chef/bin/chef-solo --config /tmp/kitchen/solo.rb --log_level auto --force-formatter --no-color --json-attributes /tmp/kitchen/dna.json
 
+The  /tmp/kitchen/solo.rb file has these contents :
+
+```
+
+node_name "default-ubuntu-1404"
+checksum_path "/tmp/kitchen/checksums"
+file_cache_path "/tmp/kitchen/cache"
+file_backup_path "/tmp/kitchen/backup"
+cookbook_path ["/tmp/kitchen/cookbooks", "/tmp/kitchen/site-cookbooks"]
+data_bag_path "/tmp/kitchen/data_bags"
+environment_path "/tmp/kitchen/environments"
+node_path "/tmp/kitchen/nodes"
+role_path "/tmp/kitchen/roles"
+client_path "/tmp/kitchen/clients"
+user_path "/tmp/kitchen/users"
+validation_key "/tmp/kitchen/validation.pem"
+client_key "/tmp/kitchen/client.pem"
+chef_server_url "http://127.0.0.1:8889"
+encrypted_data_bag_secret "/tmp/kitchen/encrypted_data_bag_secret"
+
+```
+
+Inside the /tmp/kitchen/cookbooks
+
+* application
+* build-essential
+* poise
+* poise-python
+* python
+* yum
+* zookeepr
+* application_python
+* gunicorn
+* poise-languages
+* poise-service
+* supervisor
+* yum-epel
+
+
+# Test the cookbook locally 
+
+in the dir chef/cookbooks/zookeepr
+
+   bundle exec  chef-apply recipes/default.rb  -l debug
 
 # setup berks
 
