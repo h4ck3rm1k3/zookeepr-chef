@@ -27,3 +27,16 @@ setup_cookbooks:
 	bundle exec knife cookbook site install poise
 	bundle exec knife cookbook site download application
 	bundle exec knife cookbook site install application
+
+	bundle exec knife cookbook site download poise-service
+	bundle exec knife cookbook site download poise-python
+	bundle exec knife cookbook site download poise-languages
+
+	bundle exec knife cookbook site install poise-service
+	bundle exec knife cookbook site install poise-python
+	bundle exec knife cookbook site install poise-languages
+	bundle exec knife cookbook site download postgres
+	bundle exec knife cookbook site download application-database
+	bundle exec knife cookbook site install postgres
+	bundle exec knife cookbook site install application-database
+
