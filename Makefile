@@ -11,7 +11,17 @@ zboot :
 
 
 converge :
-	bundle exec knife zero converge '*:*' --ssh-user vagrant 
+	bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo
 
 runbundle:
 	bundle install  --path gempath/
+
+setup_cookbooks:
+	bundle exec knife cookbook site download python
+	bundle exec knife cookbook site install python
+	bundle exec knife cookbook site download poise
+	bundle exec knife cookbook site install poise
+	bundle exec knife cookbook site download application_python
+	bundle exec knife cookbook site install application_python
+	bundle exec knife cookbook site download poise
+	bundle exec knife cookbook site install poise

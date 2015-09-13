@@ -80,15 +80,13 @@ Using these modules from git, install via git clone and gem
 
 Run bootstrap on the newly created object to test it:
 
-    bundle exec knife zero bootstrap 192.168.67.2 --ssh-user vagrant --sudo
+    bundle exec knife zero bootstrap 192.168.67.2  --ssh-user vagrant --sudo
 
-and then you can run converge :
+But first check if you can connect to the server:
 
-    knife zero converge 'name:test' 
+We use the fqdn that we will setup in the ~/.ssh/config
 
-But first check if you can connect to :
-
-    bundle exec knife ssh 'name:test' -VV ifconfig -x vagrant -a ipaddress
+    bundle exec knife ssh 'name:test' -VV ifconfig -x vagrant -a fqdn
 
 
 but and before that you want to first 
@@ -117,10 +115,13 @@ Host test
   LogLevel FATAL
 
 ```
+and install this into ~/.ssh/config.
+
 
 check the connection :
 
     bundle exec knife ssh 'name:test' -VV "sudo ifconfig" -x vagrant
+
 
 list the nodes:
 
@@ -138,10 +139,26 @@ install the cookbook :
     bundle exec knife cookbook site download application_python
     bundle exec knife cookbook site install application_python
 
+etc...
 
-run converge :
+see the makefile rule setup_cookbooks.
 
-    bundle exec knife zero converge '*:*' --ssh-user vagrant
+## Check the node setup 
+
+The client setup :
+
+    clients/test.json
+
+    nodes/test.json
+
+## Attributes
+
+See this list
+http://serverfault.com/questions/400836/what-are-the-values-for-attributes-in-knife-ssh-a-ipaddress-etc
+
+Get the json output :
+
+    bundle exec knife search node "name:test" -F json
 
 # setup cookbook
 
@@ -208,6 +225,14 @@ in the dir chef/cookbooks/zookeepr
 in chef/cookbooks/zookeepr
 
     bundle exec berks init .
+
+## Converge
+
+    now you can run converge :
+
+    bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo
+    
+
 
 # Sources
 
