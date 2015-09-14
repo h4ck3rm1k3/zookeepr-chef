@@ -13,6 +13,9 @@ zboot :
 converge :
 	bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo --no-color --sudo 
 
+upload:
+	bundle exec  knife cookbook upload application
+
 runbundle:
 	bundle install  --path gempath/
 

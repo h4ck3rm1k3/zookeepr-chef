@@ -143,6 +143,15 @@ etc...
 
 see the makefile rule setup_cookbooks.
 
+Note: I was not able to get the git@github.com:h4ck3rm1k3/application_python.git to install correctly, so I
+just git cloned it and symlinked it into cookbooks/application_python/ I needed
+to add the metadata.rb
+
+see:
+
+http://stackoverflow.com/questions/14974637/chef-server-install-a-cookbook-that-is-not-from-cookbook-site
+
+
 ## Check the node setup 
 
 The client setup :
