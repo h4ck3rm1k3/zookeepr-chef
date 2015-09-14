@@ -191,3 +191,5 @@ gem 'poise-application', :path => '../../application'
 #, github: 'poise/application'
 gem 'poise-application-python', :path => '../../application_python'
 #, github: 'poise/application_python'
+
+#gem 'knife-github-cookbooks', :path => '../../knife-github-cookbooks'

@@ -282,7 +282,7 @@ GEM
       fog-core
       fog-json
       fog-xml
-    fog-sakuracloud (1.1.0)
+    fog-sakuracloud (1.1.1)
       fog-core
       fog-json
     fog-serverlove (0.1.2)
@@ -372,7 +372,7 @@ GEM
     mixlib-config (2.2.1)
     mixlib-install (0.7.0)
     mixlib-log (1.6.0)
-    mixlib-shellout (2.2.0)
+    mixlib-shellout (2.2.1)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
