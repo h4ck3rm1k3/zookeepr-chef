@@ -228,10 +228,14 @@ in chef/cookbooks/zookeepr
 
 ## Converge
 
-    now you can run converge :
+now you can run converge :
 
     bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo
-    
+
+If you make any changes, run the upload :
+
+    bundle exec  knife cookbook upload application
+
 
 
 # Sources

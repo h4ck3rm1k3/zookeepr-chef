@@ -1,10 +1,19 @@
-GIT
-  remote: git://github.com/poise/application.git
-  revision: 28684c55bdaeadbe802c1ee304ce99c117cb02b1
+PATH
+  remote: ../../application
   specs:
     poise-application (5.0.0.pre)
       halite (~> 1.0)
       poise (~> 2.0)
+      poise-service (~> 1.0)
+
+PATH
+  remote: ../../application_python
+  specs:
+    poise-application-python (4.0.0.pre)
+      halite (~> 1.0)
+      poise (~> 2.0)
+      poise-application (~> 5.0.pre)
+      poise-python (~> 1.0.pre)
       poise-service (~> 1.0)
 
 PATH
@@ -403,6 +412,13 @@ GEM
     plist (3.1.0)
     poise (2.3.2)
       halite (~> 1.0)
+    poise-languages (1.0.0)
+      halite (~> 1.0)
+      poise (~> 2.3)
+    poise-python (1.0.0)
+      halite (~> 1.0)
+      poise (~> 2.0)
+      poise-languages (~> 1.0.dev)
     poise-service (1.0.1)
       halite (~> 1.0)
       poise (~> 2.0)
@@ -636,6 +652,7 @@ DEPENDENCIES
   parallel (= 1.6.1)
   plist (= 3.1.0)
   poise-application!
+  poise-application-python!
   pry (= 0.10.1)
   pry-rescue
   pry-stack_explorer

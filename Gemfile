@@ -187,4 +187,7 @@ gem "dep_selector",  :path => '../../dep-selector'
 
 gem "buff-config", :path => '../../buff-config'
 
-gem 'poise-application', github: 'poise/application'
+gem 'poise-application', :path => '../../application'
+#, github: 'poise/application'
+gem 'poise-application-python', :path => '../../application_python'
+#, github: 'poise/application_python'
