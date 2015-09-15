@@ -246,6 +246,21 @@ If you make any changes, run the upload :
     bundle exec  knife cookbook upload application
 
 
+# shell
+
+On the main env
+
+    chef-zero --log-level debug -H 0.0.0.0
+
+Get the public ip.
+
+    ifconfig
+
+On the remote server
+
+    chef-shell -z -S http://192.168.1.2:8889/
+
+see https://windowsguygoesopensource.wordpress.com/2015/08/03/chef-zero-with-chef-shell/
 
 # Sources
 
