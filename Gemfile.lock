@@ -1,22 +1,4 @@
 PATH
-  remote: ../../application
-  specs:
-    poise-application (5.0.0.pre)
-      halite (~> 1.0)
-      poise (~> 2.0)
-      poise-service (~> 1.0)
-
-PATH
-  remote: ../../application_python
-  specs:
-    poise-application-python (4.0.0.pre)
-      halite (~> 1.0)
-      poise (~> 2.0)
-      poise-application (~> 5.0.pre)
-      poise-python (~> 1.0.pre)
-      poise-service (~> 1.0)
-
-PATH
   remote: ../../berkshelf
   specs:
     berkshelf (3.3.0)
@@ -126,6 +108,24 @@ PATH
       wdm (~> 0.1.0)
       winrm (~> 1.3)
       winrm-fs (~> 0.2.2)
+
+PATH
+  remote: cookbooks/application
+  specs:
+    poise-application (5.0.0.pre)
+      halite (~> 1.0)
+      poise (~> 2.0)
+      poise-service (~> 1.0)
+
+PATH
+  remote: cookbooks/application_python
+  specs:
+    poise-application-python (4.0.0.pre)
+      halite (~> 1.0)
+      poise (~> 2.0)
+      poise-application (~> 5.0.pre)
+      poise-python (~> 1.0.pre)
+      poise-service (~> 1.0)
 
 GEM
   remote: https://rubygems.org/
