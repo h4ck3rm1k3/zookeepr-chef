@@ -118,6 +118,14 @@ PATH
       poise-service (~> 1.0)
 
 PATH
+  remote: cookbooks/application_git
+  specs:
+    poise-application-git (1.0.0.pre)
+      halite (~> 1.0)
+      poise (~> 2.0)
+      poise-application (~> 5.0.pre)
+
+PATH
   remote: cookbooks/application_python
   specs:
     poise-application-python (4.0.0.pre)
@@ -671,6 +679,7 @@ DEPENDENCIES
   parallel (= 1.6.1)
   plist (= 3.1.0)
   poise-application!
+  poise-application-git!
   poise-application-python!
   pry (= 0.10.1)
   pry-rescue
