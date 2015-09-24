@@ -1,3 +1,5 @@
+bundlerinstall:
+	bundle install
 
 bootstrap :
 
@@ -13,8 +15,8 @@ zboot :
 converge :
 	bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo --no-color --sudo 
 
-upload:
-	bundle exec  knife cookbook upload application
+upload_all:
+	bundle exec  knife cookbook upload -a
 
 runbundle:
 	bundle install  --path gempath/
@@ -47,8 +49,18 @@ setup_cookbooks:
 	bundle exec knife cookbook site download postgres
 	bundle exec knife cookbook site install postgres
 
-
 	bundle exec knife cookbook site download git
 	bundle exec knife cookbook site install git
+
+setup_cookbooks2:
+
+	#bundle exec knife cookbook site download poise-application-git
+	#bundle exec knife cookbook site install poise-application-git
+
+	bundle exec knife cookbook site download database
+	bundle exec knife cookbook site install database
+
+	bundle exec knife cookbook site download postgres
+	bundle exec knife cookbook site install postgres
 
 
