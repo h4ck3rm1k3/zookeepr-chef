@@ -1,0 +1,3 @@
+[submodule "cbsources"]
+	path = cbsources
+	url = git@github.com:h4ck3rm1k3/zookeepr-chef-repos.git

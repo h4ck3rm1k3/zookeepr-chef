@@ -1,3 +1,18 @@
+
+doit :
+#	git submodule init
+#	git submodule update
+	bundle install
+	#bundle exec berks install
+	bundle exec rake2.1 build
+
+
+#run_test:
+#	strace -e open -f -o trace.txt bundle exec chef-solo --config test_files/solo.rb  --json-attributes test_files/dna.json
+
+run_solo :
+	bundle exec chef-solo -c solo.rb  -j nodes/test.json --log_level debug --force-formatter --no-color
+
 bundlerinstall:
 	bundle install
 
@@ -34,7 +49,7 @@ setup_cookbooks:
 	bundle exec knife cookbook site download poise
 	bundle exec knife cookbook site install poise
 
-	bundle exec knife cookbook site download application
+	bundle exec knife cookbook site download application # we need to overwrite this later
 	bundle exec knife cookbook site install application
 
 	bundle exec knife cookbook site download poise-service

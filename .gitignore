@@ -46,3 +46,9 @@ tramp
 /.chef/syntaxcache/*
 .kitchen/
 .kitchen.local.yml
+/chef-solo/chef-client-running.pid
+/chef-solo/chef-stacktrace.out
+/client.rb
+/client.txt
+/trace.txt
+/id_rsa.pem

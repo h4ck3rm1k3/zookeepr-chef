@@ -1,34 +1,26 @@
 # A sample Gemfile
 source "https://rubygems.org"
-
 gem "CFPropertyList","2.3.1"
 gem "addressable","2.3.8"
 gem "aws-sdk","2.1.17"
 gem "aws-sdk-resources","2.1.17"
 gem "aws-sdk-v1","1.65.0"
-gem "berkshelf", :path => '../../berkshelf'
 gem "berkshelf-api-client","1.3.0"
-gem "buff-config", :path => '../../buff-config'
 gem "buff-extensions","1.0.0"
 gem "buff-ignore","1.1.1"
 gem "buff-ruby_engine","0.1.0"
 gem "buff-shell_out","0.2.0"
 gem "builder","3.2.2"
-gem "bundler"#,"1.10.6"
+
 gem "celluloid","0.16.0"
 gem "celluloid-io","0.16.2"
-gem "chef","12.4.1"
-gem "chef-config","12.4.1"
-gem "chef-provisioning","1.3.0"
-gem "chef-provisioning-aws", :path => '../../chef-provisioning-aws'
+
 gem "chef-zero","4.2.3"
 gem "cheffish","1.3.1"
 gem "childprocess","0.5.6"
 gem "cleanroom","1.0.0"
 gem "coderay","1.1.0"
 gem "coveralls","0.8.2"
-gem "dep-selector-libgecode",  :path => '../../dep-selector-libgecode'
-gem "dep_selector",  :path => '../../dep-selector'
 gem "diff-lcs","1.2.5"
 gem "docile","1.1.5"
 gem "domain_name","0.5.24"
@@ -37,8 +29,6 @@ gem "erubis","2.7.0"
 gem "eventmachine","1.0.8"
 gem "excon","0.45.4"
 gem "faraday","0.9.1"
-gem "ffi", :path => '../../ffi'
-gem "ffi-yajl", :path => '../../ffi-yajl'
 gem "fission","0.5.0"
 gem "fog-aws","0.7.6"
 gem "formatador","0.2.5"
@@ -54,9 +44,7 @@ gem "inflecto","0.0.2"
 gem "inifile","2.0.2"
 gem "ipaddress","0.8.0"
 gem "json","1.8.3"
-gem "kitchen-vagrant", :path => '../../kitchen-vagrant'
 gem "knife-ec2" #,"0.11.0"
-gem "knife-solo", :path => '../../knife-solo'
 gem "knife-windows","0.8.6"
 gem "knife-zero","1.8.0"
 gem "librarian","0.1.2"
@@ -71,7 +59,6 @@ gem "minitar","0.5.4"
 gem "minitest","4.7.5"
 gem "mixlib-authentication","1.3.0"
 gem "mixlib-cli","1.5.0"
-gem "mixlib-config","2.2.1"
 gem "mixlib-install","0.7.0"
 gem "mixlib-log","1.6.0"
 gem "mocha","1.1.0"
@@ -87,7 +74,6 @@ gem "nio4r","1.1.1"
 gem "nokogiri"#,"1.6.6.2"
 gem "nori","2.6.0"
 gem "octokit","3.8.0"
-gem "ohai","8.5.1"
 gem "parallel","1.6.1"
 gem "plist","3.1.0"
 gem "pry","0.10.1"
@@ -126,17 +112,37 @@ gem "ubuntu_ami","0.4.1"
 gem "unf","0.1.4"
 gem "unf_ext","0.0.7.1"
 gem "uuidtools","2.1.5"
-gem "vagrant", :path => '../../vagrant'
 gem "varia_model","0.4.0"
 gem "winrm","1.3.4"
 gem "winrm-s","0.3.1"
 gem "wmi-lite","1.0.0"
-gem 'chefspec', :path => '../../chefspec'
 gem 'knife-reporting'
-gem 'knife-spec', :path => '../../knife-spec'
 gem 'knife-vagrant2'
+gem 'pry-rescue'
+gem 'pry-stack_explorer'
+
+                                                                                      
+gem "mixlib-config", :path => 'cbsources/mixlib-config'
+gem "chef", :path => 'cbsources/chef'
+gem "chef-config", :path => 'cbsources/chef/chef-config'
+gem "ohai", :path => 'cbsources/ohai'
+gem "berkshelf", :path => 'cbsources/berkshelf'
+gem "buff-config", :path => 'cbsources/buff-config'
+gem "chef-provisioning-aws", :path => 'cbsources/chef-provisioning-aws'
+gem "dep-selector-libgecode",  :path => 'cbsources/dep-selector-libgecode'
+gem "dep_selector",  :path => 'cbsources/dep-selector'
+gem "ffi", :path => 'cbsources/ffi'
+gem "ffi-yajl", :path => 'cbsources/ffi-yajl'
+gem "kitchen-vagrant", :path => 'cbsources/kitchen-vagrant'
+gem "knife-solo", :path => 'cbsources/knife-solo'
+gem "vagrant", :path => 'cbsources/vagrant'
+gem 'chefspec', :path => 'cbsources/chefspec'
+gem 'knife-spec', :path => 'cbsources/knife-spec'
 gem 'poise-application', :path => 'cbsources/application'
 gem 'poise-application-python', :path => 'cbsources/application_python'
 gem 'poise-application-git', :path => 'cbsources/application_git'
-gem 'pry-rescue'
-gem 'pry-stack_explorer'
+gem 'poise', :path => 'cbsources/poise'
+gem 'poise-service', :path => 'cbsources/poise-service'
+
+gem "chef-provisioning",:path => 'cbsources/chef-provisioning'
+gem "bundler",:path => 'cbsources/bundler'

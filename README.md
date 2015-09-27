@@ -73,7 +73,6 @@ Using these modules from git, install via git clone and gem
 
 # bootstrap on vagrant
 
-
 But first check if you can connect to the server:
 
 Before that you want to first run :
@@ -141,8 +140,9 @@ to add the metadata.rb
 
 Now you can Run bootstrap on the newly created object to test it:
 
-    bundle exec knife zero bootstrap 192.168.67.2  --ssh-user vagrant --sudo
+    bundle exec knife zero bootstrap test --sudo -x vagrant
 
+Be careful, after we run bootstrap, the runbook is removed!
 
 
 ## Check the node setup 
@@ -167,13 +167,15 @@ Get the json output :
     knife cookbook create zookeepr
 
 
-## Testing via vagrant
+## Testing via vagrant inside the cookbook
 
 put the test-kitchen into the Gemfile and run ```bundle install```
 
     bundle exec kitchen init
+
 test via vagrant :
 
+    cd cookbooks/zookeepr
     bundle exec kitchen test
 
 this will run on the new vagrant server:
@@ -226,7 +228,8 @@ see cookbooks/zookeepr/README.md in the section Testing
 
 now you can run converge :
 
-    bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo
+    bundle exec knife zero converge 'name:test' --ssh-user vagrant --sudo
+
 
 
 ## compiler existing cookbooks
@@ -257,6 +260,17 @@ Get the public ip.
 On the remote server
 
     chef-shell -z -S http://192.168.1.2:8889/
+
+## Shell commands
+
+TODO
+
+# Chef client zero
+
+    bundle exec chef-client -z -o zookeepr -l debug
+
+    bundle exec chef-client -z -o zookeepr -l debug -k id_rsa.pem -K id_rsa.pem
+    -c client.rb
 
 
 # Sources
