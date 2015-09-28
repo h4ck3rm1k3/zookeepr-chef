@@ -226,13 +226,27 @@ see cookbooks/zookeepr/README.md in the section Testing
 
 ## Converge
 
+You will need to run upload before you can converge.
+
+    make upload_all converge
+
+which runs :
+
+    bundle exec  knife cookbook upload -a
+
+But you will also have to build gems/metadata.rb for the halite modules if you
+want to use them.
+
 now you can run converge :
 
     bundle exec knife zero converge 'name:test' --ssh-user vagrant --sudo
 
+or just :
+
+    make converge
 
 
-## compiler existing cookbooks
+## compile existing cookbooks
 
 Many cookbooks are really gems that use Halite https://github.com/poise/halite and do not have a metadata.rb 
 In order to generate them, I use this command in the cookbook directory.

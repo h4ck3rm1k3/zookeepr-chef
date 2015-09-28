@@ -1,5 +1,6 @@
 #cookbook_path    ["cookbooks"]
 node_path        "nodes"
+node_name        "test"
 role_path        "roles"
 environment_path "environments"
 data_bag_path    "data_bags"

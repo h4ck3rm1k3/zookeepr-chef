@@ -15,7 +15,7 @@ gem "builder","3.2.2"
 gem "celluloid","0.16.0"
 gem "celluloid-io","0.16.2"
 
-gem "chef-zero","4.2.3"
+
 gem "cheffish","1.3.1"
 gem "childprocess","0.5.6"
 gem "cleanroom","1.0.0"
@@ -46,7 +46,7 @@ gem "ipaddress","0.8.0"
 gem "json","1.8.3"
 gem "knife-ec2" #,"0.11.0"
 gem "knife-windows","0.8.6"
-gem "knife-zero","1.8.0"
+
 gem "librarian","0.1.2"
 gem "librarian-chef","0.0.4"
 gem "libyajl2","1.2.0"
@@ -146,3 +146,5 @@ gem 'poise-service', :path => 'cbsources/poise-service'
 
 gem "chef-provisioning",:path => 'cbsources/chef-provisioning'
 gem "bundler",:path => 'cbsources/bundler'
+gem "knife-zero",:path => 'cbsources/knife-zero'
+gem "chef-zero",:path => 'cbsources/chef-zero'

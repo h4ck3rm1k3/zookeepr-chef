@@ -35,8 +35,11 @@ knife[:validation_key] = "/dev/null"
 
 #Chef::Config[:ssl_verify_mode] = :verify_peer if defined? ::Chef
 
+#Chef::Config[:verbosity] = 999
 #knife[:verbose_commands] 	 
 knife[:verbosity] =999
+
+verbosity =999
 
 identity_file = 'test.pem'
 
