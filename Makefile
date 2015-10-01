@@ -1,4 +1,8 @@
 
+run_book :
+	bundle exec ruby ./runbook.rb
+
+# test locally and fast
 run_solo :
 	bundle exec chef-solo -c solo.rb  -j nodes/test.json --log_level debug --force-formatter --no-color
 
@@ -9,20 +13,8 @@ bootstrap :
 
 	bundle exec knife bootstrap -z 192.168.67.2 --ssh-user vagrant  --local-mode --no-color --sudo 
 
-
-
-zboot :
+zbootstrap :
 	bundle exec knife zero bootstrap 192.168.67.2 --ssh-user vagrant --sudo  --no-color
-
-
-converge :
-	bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo --no-color --sudo 
-
-upload_all:
-	bundle exec  knife cookbook upload -a
-
-runbundle:
-	bundle install  --path gempath/
 
 setup_cookbooks:
 	bundle exec knife cookbook site download python
@@ -71,3 +63,28 @@ setup_cookbooks2:
 	#bundle exec knife cookbook site download application_git
 	bundle exec knife cookbook site install application_git
 
+
+# knife cookbook bulk delete REGEX (options)
+# knife cookbook create COOKBOOK (options)
+# knife cookbook delete COOKBOOK VERSION (options)
+# knife cookbook download COOKBOOK [VERSION] (options)
+# knife cookbook list (options)
+# knife cookbook metadata COOKBOOK (options)
+# knife cookbook metadata from FILE (options)
+# knife cookbook show COOKBOOK [VERSION] [PART] [FILENAME] (options)
+# knife cookbook test [COOKBOOKS...] (options)
+# knife cookbook upload [COOKBOOKS...] (options)
+
+
+upload_all:
+	bundle exec  knife cookbook upload -a
+
+converge :
+	bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo --no-color --sudo  --verbose --verbose  -c knifezero.rb
+
+converge_poise :
+	bundle exec knife zero converge 'name:test' -a fqdn --ssh-user vagrant --sudo --no-color --sudo  --verbose --verbose  -c knifezero.rb -o poise
+
+
+upload_poise:
+	strace -e open  -o upload.txt -f bundle exec  knife cookbook upload poise 2.4.1.pre
