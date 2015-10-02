@@ -1,5 +1,8 @@
 # run a cook book.
-
+require 'chef/version'
+require 'chef/client'
+require 'chef/config'
+require 'chef/config_fetcher'
 require 'chef/cookbook/file_vendor'
 require 'chef/cookbook/file_system_file_vendor'
 require 'chef/cookbook_loader'
@@ -19,15 +22,47 @@ cl = Chef::CookbookLoader.new(cookbook_path)
 cl.load_cookbooks
 cookbook_collection = Chef::CookbookCollection.new(cl)
 node = Chef::Node.new()
+node.default[:runlist] = Chef::RunList.new
+
+node.default['platform'] = "linux",
+node.default['platform_version'] = "8.0"
+
+config_fetcher = Chef::ConfigFetcher.new("nodes/test.json")
+json_node_attribs = config_fetcher.fetch_json
+#p json_node_attribs
+
+node.consume_attributes(json_node_attribs)
+node.expand!("disk")
+
+#p node
+codename = node.attribute?('lsb') ? node['lsb']['codename'] : 'notlinux'
+print  "#{node['platform'].capitalize} #{codename}"
+
+#require 'cookbooks/apt/attributes/default.rb'
+#node.run_list();
 events = Chef::EventDispatch::Dispatcher.new()
 run_context = Chef::RunContext.new(node, cookbook_collection, events)
+
+recipes = [
+  #"recipe[zookeepr]",
+  "zookeepr",
+]
+RunListExpansionIsh = Struct.new(:recipes, :roles)
+run_list_expansion_ish =        RunListExpansionIsh.new(recipes, [])
+#p "run_context",run_context
+#p "run_list_expansion_ish",run_list_expansion_ish
+
+puts "recipes", node[:recipes]
+
+run_context.load(run_list_expansion_ish)
+#p "run_context",run_context
 runner = Chef::Runner.new(run_context)
 
-set_trace_func proc { |event, file, line, id, binding, classname|
-  file.gsub! '/mnt/data/home/mdupont/experiments/zookeepr/chef/cbsources/',"SRC/"
-  file.gsub! '/usr/lib/ruby/2.1.0/',"RUBY/"
-     printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
-  }
+# set_trace_func proc { |event, file, line, id, binding, classname|
+#   file.gsub! '/mnt/data/home/mdupont/experiments/zookeepr/chef/cbsources/',"SRC/"
+#   file.gsub! '/usr/lib/ruby/2.1.0/',"RUBY/"
+#      printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
+#   }
 runner.converge
 
 #require "./cookbooks/zookeepr/recipes/default.rb"
