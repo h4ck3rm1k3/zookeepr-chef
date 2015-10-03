@@ -1,4 +1,7 @@
 
+install :
+	apt-get install	ruby-json
+
 run_book :
 	bundle exec ruby ./runbook.rb
 
