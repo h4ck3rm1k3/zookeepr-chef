@@ -52,3 +52,5 @@ tramp
 /client.txt
 /trace.txt
 /id_rsa.pem
+/Makefile.orig
+/knifezero.rb
