@@ -1,0 +1,17 @@
+{
+    "name": "test",
+    "normal": {
+	"knife_zero": {
+	    "host": "test"
+	},
+	"tags": [
+
+	]
+    },
+    "platform" : "linux",
+    "os_release" : "8.0",
+
+    "run_list": [
+	"recipe[zookeepr]"
+    ]
+}
