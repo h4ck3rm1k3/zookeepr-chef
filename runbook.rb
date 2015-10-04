@@ -15,11 +15,15 @@ require 'chef/event_dispatch/dispatcher'
 
 Chef::Log.level(:debug)
 
-cookbook_path="./cookbooks/"
+#cookbook_path="./cookbooks/"
+cookbook_path="./cbsources"
+cookbook_path2="./cookbooks"
 
 Chef::Cookbook::FileVendor.fetch_from_disk(cookbook_path)
-cl = Chef::CookbookLoader.new(cookbook_path)
+Chef::Cookbook::FileVendor.fetch_from_disk(cookbook_path2)
+cl = Chef::CookbookLoader.new(cookbook_path, cookbook_path2)
 cl.load_cookbooks
+puts cl
 cookbook_collection = Chef::CookbookCollection.new(cl)
 node = Chef::Node.new()
 node.default[:runlist] = Chef::RunList.new
@@ -27,7 +31,7 @@ node.default[:runlist] = Chef::RunList.new
 node.default['platform'] = "linux",
 node.default['platform_version'] = "8.0"
 
-config_fetcher = Chef::ConfigFetcher.new("nodes/test.json")
+config_fetcher = Chef::ConfigFetcher.new("testnode.json")
 json_node_attribs = config_fetcher.fetch_json
 #p json_node_attribs
 
