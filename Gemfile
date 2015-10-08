@@ -6,7 +6,7 @@ def dogem(name, version=">0.0.0", path: File.join('./cbsources', name))
   #path2 = File.expand_path(File.join('..', path), __FILE__)
   #puts path, path2, name, version
   if File.exist?(path)
-    puts "Found #{name} in #{path}"
+    #puts "Found #{name} in #{path}"
     gem name, path: path
   elsif
     puts "Did not find #{name} in #{path}"
@@ -154,8 +154,11 @@ dogem 'knife-spec', :path => 'cbsources/knife-spec'
 dogem 'knife-vagrant2'
 dogem 'poise', :path => 'cbsources/poise'
 dogem 'poise-application', :path => 'cbsources/application'
+dogem 'poise-python', :path => 'cbsources/poise-python'
 dogem 'poise-application-git', :path => 'cbsources/application_git'
 dogem 'poise-application-python', :path => 'cbsources/application_python'
 dogem 'poise-service', :path => 'cbsources/poise-service'
 dogem 'pry-rescue'
 dogem 'pry-stack_explorer'
+dogem 'chef-resource', :path => 'cbsources/resource'
+

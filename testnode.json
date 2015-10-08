@@ -1,5 +1,10 @@
 {
     "name": "test",
+    "authorization" : {
+        "database" : {
+            "password" : "funky"
+        }
+    },
     "normal": {
 	"knife_zero": {
 	    "host": "test"

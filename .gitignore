@@ -54,3 +54,6 @@ tramp
 /id_rsa.pem
 /Makefile.orig
 /knifezero.rb
+/compile.el
+/cookbooks-old/
+/trace_node.txt

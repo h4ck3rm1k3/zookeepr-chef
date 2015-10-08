@@ -144,7 +144,7 @@ PATH
 PATH
   remote: cbsources/chef-provisioning
   specs:
-    chef-provisioning (1.4.0)
+    chef-provisioning (1.4.1)
       cheffish (~> 1.3, >= 1.3.1)
       inifile (~> 2.0)
       mixlib-install (~> 0.6)
@@ -266,11 +266,25 @@ PATH
       halite (~> 1.0)
 
 PATH
+  remote: cbsources/poise-python
+  specs:
+    poise-python (1.1.0.pre)
+      halite (~> 1.0)
+      poise (~> 2.0)
+      poise-languages (~> 1.0.dev)
+
+PATH
   remote: cbsources/poise-service
   specs:
     poise-service (1.0.3.pre)
       halite (~> 1.0)
       poise (~> 2.0)
+
+PATH
+  remote: cbsources/resource
+  specs:
+    chef-resource (0.2.2)
+      json (>= 1.7.7)
 
 PATH
   remote: cbsources/rspec-core
@@ -515,10 +529,6 @@ GEM
     poise-languages (1.2.0)
       halite (~> 1.0)
       poise (~> 2.3)
-    poise-python (1.1.0)
-      halite (~> 1.0)
-      poise (~> 2.0)
-      poise-languages (~> 1.2)
     pry (0.10.2)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -614,6 +624,7 @@ DEPENDENCIES
   chef-config!
   chef-provisioning!
   chef-provisioning-aws!
+  chef-resource!
   chef-zero!
   chefspec!
   dep-selector-libgecode!
@@ -634,6 +645,7 @@ DEPENDENCIES
   poise-application!
   poise-application-git!
   poise-application-python!
+  poise-python!
   poise-service!
   ridley!
   rspec!

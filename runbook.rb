@@ -23,6 +23,12 @@ Chef::Cookbook::FileVendor.fetch_from_disk(cookbook_path)
 Chef::Cookbook::FileVendor.fetch_from_disk(cookbook_path2)
 cl = Chef::CookbookLoader.new(cookbook_path, cookbook_path2)
 cl.load_cookbooks
+
+cl.methods.each do |x|
+  file,line =  cl.method(x).source_location
+  puts "Check #{x}  #{cl.method(x)} File #{file} Line #{line}"
+end
+
 puts cl
 cookbook_collection = Chef::CookbookCollection.new(cl)
 node = Chef::Node.new()
@@ -62,11 +68,14 @@ run_context.load(run_list_expansion_ish)
 #p "run_context",run_context
 runner = Chef::Runner.new(run_context)
 
-# set_trace_func proc { |event, file, line, id, binding, classname|
+
+  
+set_trace_func proc { |event, file, line, id, binding, classname|
 #   file.gsub! '/mnt/data/home/mdupont/experiments/zookeepr/chef/cbsources/',"SRC/"
 #   file.gsub! '/usr/lib/ruby/2.1.0/',"RUBY/"
-#      printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
-#   }
+  #printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
+  printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
+}
 runner.converge
 
 #require "./cookbooks/zookeepr/recipes/default.rb"

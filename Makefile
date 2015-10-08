@@ -1,15 +1,21 @@
+run_book :
+	#bundle install
+	bundle exec ruby ./runbook.rb
+
+run_book2:
+	bundle exec ruby ./runbook2.rb
+
+prepare :
+	cd cbsources/ && make
+
 cbsources/bundler/bundler-1.10.6.gem :
 	cd cbsources/bundler/ && gem build bundler.gemspec
 	gem install cbsources/bundler/*.gem
 
-prepare :cbsources/bundler/bundler-1.10.6.gem
-	cd cbsources/application && bundle exec rake package
 
 install :
 	apt-get install	ruby-json
 
-run_book :
-	bundle exec ruby ./runbook.rb
 
 # test locally and fast
 run_solo :
