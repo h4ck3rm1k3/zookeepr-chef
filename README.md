@@ -1,6 +1,23 @@
 # zookeepr-chef
 chef code for running zookeepr
 
+# plan
+
+This cookbook should be able compile into a stand alone program that can be
+executed on the target system. The first version should be able to run from git
+with submodules with no server or anything. The idea is to check out all code
+from git and run the runbook.rb to install or update the software.
+
+Future versions should be able to emit a standalone program that can be run
+with minimal library and code dependencies. Ideally it should be one file. All
+data files and packages could be put into a zip file that could be for each
+platform.
+
+But what I would like to see is a standard runtime/dsl for execution of client
+setup. This runtime interface/dsl should be the same for salt and for chef etc
+so that you hae one syntax and multiple implementations of the runtime.
+
+
 #EC2 Testing
 
 1. create key named ``test`` in aws store in zookeepr/chef/.chef/test.pem
