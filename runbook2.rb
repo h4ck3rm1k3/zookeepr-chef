@@ -36,6 +36,9 @@ recipe_name = "default"
 cookbook_path="./cbsources"
 cookbook_path2="./cookbooks"
 
+@fakeroot_path=Dir.pwd + "/fakeroot"
+
+
 # Chef::Cookbook::FileVendor.fetch_from_disk(cookbook_path)
 # Chef::Cookbook::FileVendor.fetch_from_disk(cookbook_path2)
 cl = Chef::CookbookLoader.new(cookbook_path, cookbook_path2)
@@ -64,6 +67,7 @@ def create_node
       "tags"=>[]},
     "platform"=>"linux",
     "os_release"=>"8.0",
+    "python_runtime" => "foo",
     "run_list"=>["recipe[zookeepr]"]
   }
   puts "json_node_attribs #{json_node_attribs}"
@@ -135,37 +139,101 @@ end
 
 
 def template(*args, &block)
-  #Chef.log_deprecation("Cannot create resource template with more than one argument. All arguments except the name (#{args[0].inspect}) will be ignored. This will cause an error in Chef 13. Arguments: #{args}") if args.size > 1
-  #declare_resource(:template, args[0], caller[0], &block)
   r= Chef::Resource::Template.new(args[0])
   r.instance_eval(&block)
-  Chef::Log.debug("Resource #{r}")
-  pp r
+  r.path = @fakeroot_path + r.path
+  #Chef::Log.debug("Resource #{r}")
+  #pp r
   r.cookbook_name = @cookbook_name	
   p = Chef::Provider::Template.new(r, @run_context)
+  #p.cookbook_name = @cookbook_name
+  r2 = p.load_current_resource()
+  #p.instance_eval(&block)
+  Chef::Log.debug("Provider #{p}")
+  #pp p
+  p.run_action(:create)
+  return p  
+end
 
+             
+def application(*args, &block)
+  #see chef/resource_builder.rb#build
+  r= PoiseApplication::Resources::Application::Resource.new(args[0])
+  r.run_context=@run_context
+  #r.instance_eval(&block)
+  #r.afer_created()
+  #r.path = @fakeroot_path + r.path
+  Chef::Log.debug("Resource #{r}")
+#  pp r
+  #r.cookbook_name = @cookbook_name	
+  p = PoiseApplication::Resources::Application::Provider.new(r, @run_context)
   #p.cookbook_name = @cookbook_name
   r2 = p.load_current_resource()
   #p.instance_eval(&block)
   Chef::Log.debug("Provider #{p}")
   pp p
-  
-  p.run_action(:create)
-  
-  return e   
+  Chef::Log.debug("action #{p.action}")
+  # action
+  #p.run_action(p.action)
+  #action_deploy
+  # action_nothing
+  # action_reload
+  # action_restart
+  # action_start
+  # action_stop
+
+  return p    
+end
+
+
+#PoisePython::Resources::PipRequirements::Provider
+#poise_defined_in as
+require 'poise_python/resources/pip_requirements'
+require 'poise_application/resources/application'
+
+require 'poise_python/resources/python_runtime'
+
+def python_runtime ()
+end
+
+# cbsources/poise-python/lib/poise_python/resources/pip_requirements.rb
+
+#PoiseApplicationPython::Resources::PipRequirements::Resource
+# Recording poise_defined_in as application_python/lib/poise_application_python/resources/pip_requirements.rb
+#PoiseApplicationPython::Resources::PipRequirements::Resource
+#Copying provider mapping in handler map from pip_requirements to application_pip_requirements
+#Resources for generic application_pip_requirements resource enabled on node include: [PoiseApplicationPython::Resources::PipRequirements::Resource]
+#Resource for application_pip_requirements is PoiseApplicationPython::Resources::PipRequirements::Resource
+# [application[zookeepr]] Creating subresource from application_pip_requirements(/srv/zookeepr/requirements.txt)
+# Resources for generic application_pip_requirements resource enabled on node include: [PoiseApplicationPython::Resources::PipRequirements::Resource]
+# Resource for application_pip_requirements is PoiseApplicationPython::Resources::PipRequirements::Resource
+#:175:in `public_send' type:application_pip_requirements
+# [python_runtime[2]] Adding application_pip_requirements[/srv/zookeepr/requirements.txt] to subresources
+# [application[zookeepr]] Adding application_pip_requirements[/srv/zookeepr/requirements.txt] to subresources
+# [application[zookeepr]] Registering restart notification from application_pip_requirements[/srv/zookeepr/requirements.txt]
+#  * application_pip_requirements[/srv/zookeepr/requirements.txt]
+# INFO: Processing application_pip_requirements[/srv/zookeepr/requirements.txt] action install (zookeepr::default line 56)
+
+
+def pip_requirements (*args, &block)
+  r= PoiseApplicationPython::Resources::PipRequirements::Resource.new(args[0])
+  r.instance_eval(&block)
+  #r.path = @fakeroot_path + r.path
+  #Chef::Log.debug("Resource #{r}")
+  pp r
+  r.cookbook_name = @cookbook_name	
+  p = PoisePython::Resources::PipRequirements::Provider.new(r, @run_context)
+  #p.cookbook_name = @cookbook_name
+  r2 = p.load_current_resource()
+  #p.instance_eval(&block)
+  Chef::Log.debug("Provider #{p}")
+  pp p
+  p.run_action(:install)
+  return p  
   
 end
 
-             
-def application(*args, &block)
-  #Chef.log_deprecation("Cannot create resource application with more than one argument. All arguments except the name (#{args[0].inspect}) will be ignored. This will cause an error in Chef 13. Arguments: #{args}") if args.size > 1
-  #declare_resource(:application, args[0], caller[0], &block)
-  #return @application #PoiseApplication::Resources::Application::Resource.new()
-  return PoiseApplication::Resources::Application::Resource.new(args[0])
-end
 
-
-# [2015-10-05T07:10:19-04:00] DEBUG: Loading cookbook database's library file: /mnt/data/home/mdupont/experiments/zookeepr/chef/cbsources/database/libraries/resource_postgresql_database.rb
 def postgresql_database(*args, &block)
   #Chef.log_deprecation("Cannot create resource postgresql_database with more than one argument. All arguments except the name (#{args[0].inspect}) will be ignored. This will cause an error in Chef 13. Arguments: #{args}") if args.size > 1
   #declare_resource(:postgresql_database, args[0], caller[0], &block)
@@ -181,12 +249,5 @@ end
 
 require_relative './cbsources/postgresql/libraries/default'
 
-#require_relative './cbsources/application/lib/poise_application/resources/application'
-# set_trace_func proc { |event, file, line, id, binding, classname|
-# #   file.gsub! '/mnt/data/home/mdupont/experiments/zookeepr/chef/cbsources/',"SRC/"
-# #   file.gsub! '/usr/lib/ruby/2.1.0/',"RUBY/"
-#   #printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
-#   printf "%8s %s:%-2d %10s %8s\n", event, file, line, id, classname
-# }
 
 require_relative './cookbooks/zookeepr/recipes/default'

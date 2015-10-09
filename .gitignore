@@ -57,3 +57,4 @@ tramp
 /compile.el
 /cookbooks-old/
 /trace_node.txt
+/fakeroot/srv/zookeepr/development.ini
